@@ -1,0 +1,77 @@
+{% extends 'desain/main.html' %} {% load static %} {% block content %}
+
+    {% comment %} AOS {% endcomment %}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<div id="colorlib-main">
+ {% for dt in d %}
+  <div
+    class="hero-wrap js-fullheight"
+    style="background-image: url({% static 'master/images/bg_1.jpg'%})"
+    data-stellar-background-ratio="0.5"
+  >
+    <div class="overlay"></div>
+    <div class="js-fullheight d-flex justify-content-center align-items-center">
+      <div class="col-md-8 text text-center">
+        <div
+          class="img mb-4" data-aos="flip-right"
+          style="background-image: url(foto/{{dt.foto}})"
+        ></div>
+        <div class="desc">
+          <h2 class="subheading text-dark" data-aos="fade-down-right" data-aos-duration="2000" data-aos-delay="300">Hello I'm</h2>
+          <h1 class="mb-4" data-aos="fade-down-left" data-aos-duration="2000">{{dt.nama}}</h1>
+          <p class="mb-4" data-aos="fade-down">
+            {{dt.tentang_diri|safe}}
+          </p>
+          <p class="text-dark">
+            <a href="{% url 'about' %}" class="btn-custom text-dark"
+              >More About Me <span class="ion-ios-arrow-forward"></span
+            ></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-2">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+          <h2 class="mb-4" data-aos="fade-down">Articles</h2>
+          <p data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000">
+            Kumpulan artikel yang pernah dibuat sebelumnya
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        {% for b in a %}
+        <div class="col-md-4" data-aos="zoom-out" data-aos-delay="300" data-aos-duration="1000" data-aos-anchor-placement="top-center" data-aos-easing="2000">
+          <div class="blog-entry ftco-animate">
+            <a
+              href="{% url 'detail_artikel' b.id %}"
+              class="img img-2"
+              style="background-image: url(foto/{{b.foto_artikel}})"
+            ></a>
+            <div class="text text-2 pt-2 mt-3">
+              <span class="category mb-3 d-block"><a>{{b.penulis}}, {{b.tanggal|date:"d-F-Y"}}</a></span>
+              <h3 class="mb-4">
+                <a>{{b.judul}}</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}
+
+
+    {% comment %} JS AOS {% endcomment %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>

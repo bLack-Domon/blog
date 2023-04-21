@@ -1,0 +1,100 @@
+{% extends 'desain/main.html' %} {% load static %} {% block content %}
+<div id="colorlib-main">
+  <section class="home-slider js-fullheight owl-carousel">
+    <div
+      class="slider-item js-fullheight"
+      style="background-image: url({% static 'master/images/bg_2.jpg' %})"
+    >
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div
+          class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center"
+          data-scrollax-parent="true"
+        >
+          <div
+            class="col-md-10 text-center ftco-animate"
+            data-scrollax=" properties: { translateY: '70%' }"
+          >
+            <h1
+              class="mb-4"
+              data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"
+            >
+              Kumpulan Artikel
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="slider-item js-fullheight"
+      style="background-image: url({% static 'master/images/bg_3.jpg' %})"
+    >
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div
+          class="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center"
+          data-scrollax-parent="true"
+        >
+          <div
+            class="col-md-10 text-center ftco-animate"
+            data-scrollax=" properties: { translateY: '70%' }"
+          >
+            <h1
+              class="mb-4"
+              data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"
+            >
+              Skroll ke bawah...
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+           {% for c in d %}
+            <div class="col-md-12">
+              <div class="blog-entry ftco-animate">
+                <a
+                  class="img"
+                  style="background-image: url(foto/{{c.foto_artikel}})"
+                ></a>
+                <div class="text pt-2 mt-3">
+                  <h3 class="mb-4">
+                    <a>{{c.judul}}</a>
+                  </h3>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="author mb-4 d-flex align-items-left">
+                        <div class="info">
+                          <span>Written by</span>
+                          <h3>
+                            <a>{{c.penulis}}</a>, <span>{{c.tanggal|date:"d-F-Y"}}</span>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="meta-wrap d-flex flex-row-reverse">
+                        <a href="{% url 'detail_artikel' c.id %}" class="btn btn-primary p-3 px-xl-4 py-xl-3"
+                          >Continue Reading</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- END COLORLIB-MAIN -->
+{% endblock content %}

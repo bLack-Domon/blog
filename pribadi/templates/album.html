@@ -1,0 +1,25 @@
+{% extends 'desain/main.html' %} {% load static %} {% block content %}
+<div id="colorlib-main">
+  <section class="ftco-section-2">
+    <div class="photograhy">
+      <div class="row no-gutters">
+       {% for i in d %}
+        <div class="col-md-3">
+          <a
+            class="photography-entry img d-flex justify-content-center align-items-center"
+            style="background-image: url(foto/{{i.foto}})"
+          >
+            <div class="overlay"></div>
+            <div class="text text-center">
+              <h3>{{i.judul_foto}}</h3>
+              <span>{{i.tanggal}}</span>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+<!-- END COLORLIB-MAIN -->
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'desain/main.html' %} {% load static %} {% block content %}
+{% for a in d %}
+<div id="colorlib-main">
+  <div
+    class="hero-wrap hero-wrap-2 js-fullheight"
+    style="background-image: url({% static 'master/images/bg_3.jpg'%})"
+    data-stellar-background-ratio="0.5"
+  >
+    <div class="overlay"></div>
+    <div class="js-fullheight d-flex justify-content-center align-items-center">
+      <div class="col-md-8 text text-center">
+        <div
+          class="img mb-4"
+          style="background-image: url(foto/{{a.foto}})"
+        ></div>
+        <div class="desc">
+          <h2 class="subheading text-dark">Hello I'm</h2>
+          <h1 class="mb-4" data-aos="fade-down">{{a.nama}}</h1>
+          <p class="mb-4">
+            {{a.tentang_diri|safe}}
+          </p>
+          <ul class="ftco-social mt-3">
+            <li class="ftco-animate">
+              <a href="https://wa.me/{{a.hp}}" target="_blank"><span class="icon-whatsapp"></span></a>
+            </li>
+            <li class="ftco-animate">
+              <a href="{{a.fb}}" target="_blank"><span class="icon-facebook"></span></a>
+            </li>
+            <li class="ftco-animate">
+              <a href="{{a.ig}}" target="_blank"><span class="icon-instagram"></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock content %}
